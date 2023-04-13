@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+	
+<script src="src/functions/funcoes.js"></script>
+<html lang="pt-br">
+  <head>
+    <link rel="stylesheet" type="text/css" href="css/style.css" media="screen" />
+    <title>Exercicio Devs do Futuro</title>
+    <meta charset="utf-8">
+  </head>
+  <body>
+    <div id="listra2" class="listra">
+      <img src="images/totvs-logo.png">
+    </div>     
+    <div id="container"> 
+      <h1>Cadastro de cliente</h1>
+		<form id="cadastro" onsubmit="validaForm()">
+			<div id="box-nome" class="form-itens">
+				<span>Nome</span>
+				<input type="text" name="nome" id="nome" required/>
+			</div>
+			<div id="box-email" class="form-itens"> 
+				<span>E-mail</span>
+				<input type="text" name="email" id="email" required />
+			</div>
+			<div id="box-endereco" class="form-itens">
+				<span>Endereço</span>
+				<input type="text" name="endereco" id="endereco" required />
+			</div>
+			<div id="box-telefone" class="form-itens">
+				<span>Telefone</span>
+				<input type="text" name="telefone" id="telefone" required />	  
+			</div>
+			<div id="box-documento" class="form-itens">
+				<span>Tipo de documento:</span>
+				<label for="html">CPF</label>
+				<input type="radio" id="sel-cpf" name="doc" value="cpf" onchange="SelecionaDoc('cpf')" selected /> 
+				<label for="html">CNPJ</label>
+				<input type="radio" id="sel-cnpj" name="doc" value="cnpj"  onchange="SelecionaDoc('cnpj')" />  
+				<div id="box-cpf" style="display: block;">
+					<span>CPF</span>
+					<input type="text" name="cpf" id="cpf" />
+				</div>
+				<div id="box-cnpj" style="display: none;">
+					<span>CNPJ</span>
+					<input type="text" name="cnpj" id="cnpj" />
+					</span>
+				</div>
+				</div>
+				<button id="enviar" type="submit" class="botao">Enviar</button>
+		</form>
+    	<br/>
+    </div>
+    <div id="rodape"></div>
+	
+   
+  </body>
+  <script type="javascript" src="src/functions/funcoes.js"></script>
+</html>
