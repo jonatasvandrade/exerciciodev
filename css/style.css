@@ -50,7 +50,6 @@ html button{
     width: 500px;
     height: auto;
     margin: auto;
-    background: #916f2d;
     margin-top: 5px;
 
   }
@@ -72,3 +71,10 @@ html button{
     margin-top: 5px;
     display: block;
   }
+
+  .msg-erro{
+    width: 100%;
+    margin:50px;
+    transition-delay: 1250ms;
+  }
+

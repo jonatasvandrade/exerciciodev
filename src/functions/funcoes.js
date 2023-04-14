@@ -121,29 +121,88 @@ function validaNome(){
     }
 }
 
-function validaForm(){
-    alert("teste Form")
+function validacaoEmail(field) {
+    usuario = field.value.substring(0, field.value.indexOf("@"));
+    dominio = field.value.substring(field.value.indexOf("@")+ 1, field.value.length);
+    if ((usuario.length >=1) &&
+        (dominio.length >=3) &&
+        (usuario.search("@")==-1) &&
+        (dominio.search("@")==-1) &&
+        (usuario.search(" ")==-1) &&
+        (dominio.search(" ")==-1) &&
+        (dominio.search(".")!=-1) &&
+        (dominio.indexOf(".") >=1)&&
+        (dominio.lastIndexOf(".") < dominio.length - 1)) {
+    //document.getElementById("msgemail").innerHTML="E-mail válido";
+    //alert("email valido");
+    return true
+    }
+    else{
+    //document.getElementById("msgemail").innerHTML="<font color='red'>Email inválido </font>";
+    //alert("E-mail invalido");
+    return false
+    }
+}
+
+function validaForm(event){
+    event.preventDefault()
+    //alert("teste Form")
     var nome = document.getElementById("nome").value;
     var cpf = document.getElementById("cpf").value;
+    var cnpj = document.getElementById("cnpj").value;
+    var email = document.getElementById("email").value;
+    var erro;
+
     if(nome != "" && length < 2){
-        alert("nome verdadeiro")
-        alert("o nome é "+nome)
+        //alert("nome verdadeiro")
+        //("o nome é "+nome)
         
     }else{
         alert("nome Falso")
-        die;	
+        document.getElementById("msg-erro").innerHTML="<font color='red'>nome inválido</font>";	
+        erro = erro + 1;
     }
     //verifica cpf
-    alert("o CPF é"+cpf);
-    var verificaCPF = validarCPF(cpf)
+    //alert("o CPF é"+cpf);
 
     if(cpf !== ""){
-        alert("valida cpf")
+        var verificaCPF = validarCPF(cpf)
+        //alert("valida cpf")
         if(verificaCPF){
             alert('CPF válido')
         }else{
             alert('cpf inválido')
+            document.getElementById("msg-erro").innerHTML="<font color='red'>CPF inválido</font>";	
+            erro = erro + 1;
         }
+    }
+
+    if(cnpj !== ""){
+        var verificaCNPJ = validarCNPJ(cnpj)
+        alert("valida cnpj")
+        if(verificaCNPJ){
+            alert('cnpj válido')
+        }else{
+            alert('cnpj inválido')
+            document.getElementById("msg-erro").innerHTML="<font color='red'>CNPJ inválido</font>";	
+            erro = erro + 1;
+        }
+    }
+    
+    if(email !== ""){
+        alert(email)
+        var verificaEmail = validacaoEmail(email)
+        alert("valida Email")
+        if(verificaEmail){
+            alert('Email válido')
+        }else{
+            alert('Email inválido')
+            erro = erro + 1;
+        }
+    }
+
+    if(erro !== 0){
+        return false;
     }
     
 }
