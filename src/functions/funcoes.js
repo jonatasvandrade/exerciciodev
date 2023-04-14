@@ -202,7 +202,9 @@ function validaForm(event){
     }
 
     if(erro !== 0){
-        return false;
+        alert("total de erros: "+erro)
+        return;
+        
     }
     
 }
