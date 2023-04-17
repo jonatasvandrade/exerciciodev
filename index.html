@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 	
 <script src="src/functions/funcoes.js"></script>
+<script src="src/functions/validadorCEP.js"></script>
 <html lang="pt-br">
   <head>
     <link rel="stylesheet" type="text/css" href="css/style.css" media="screen" />
@@ -21,16 +22,33 @@
 			</div>
 			<div id="box-email" class="form-itens"> 
 				<span>E-mail</span>
-				<input type="email" name="email" id="email" required />
-			</div>
-			<div id="box-endereco" class="form-itens">
-				<span>Endereço</span>
-				<input type="text" name="endereco" id="endereco" required />
+				<input type="text" name="email" id="email" required />
 			</div>
 			<div id="box-telefone" class="form-itens">
 				<span>Telefone</span>
-				<input type="text" name="telefone" id="telefone" required />	  
+				<input type="text" name="telefone" id="telefone" maxlength="15" onkeyup="handlePhone(event)" required />	  
 			</div>
+			<div id="box-endereco" class="form-itens">
+				<span>CEP</span>
+				<input name="cep" type="text" id="cep" value="" maxlength="9" onblur="pesquisacep(this.value);" />
+			</div>
+			<div id="box-endereco" class="form-itens">
+				<span>Rua</span>
+				<input name="rua" type="text" id="rua" />
+			</div>
+			<div id="box-endereco" class="form-itens">
+				<span>Bairro</span>
+				<input name="bairro" type="text" id="bairro"  />
+			</div>
+			<div id="box-endereco" class="form-itens">
+				<span>Cidade</span>
+				<input name="cidade" type="text" id="cidade"  />
+			</div>
+			<div id="box-endereco" class="form-itens">
+				<span>Estado</span>
+				<input name="uf" type="text" id="uf" size="2" />
+			</div>
+			
 			<div id="box-documento" class="form-itens">
 				<span>Tipo de documento:</span>
 				<label for="html">CPF</label>
@@ -48,6 +66,7 @@
 				</div>
 				</div>
 				<button id="enviar" type="submit" class="botao">Enviar</button>
+			</div>	
 		</form>
     	<br/>
     </div>
