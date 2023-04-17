@@ -157,6 +157,35 @@ const handlePhone = (event) => {
     return value
   }
 
+  function gerarJSON(){
+    const Jnome = document.getElementById("nome").value;
+    const Jcpf = document.getElementById("cpf").value;
+    //const Jcnpj = document.getElementById("cnpj").value;
+    const Jtelefone = document.getElementById("telefone").value;
+    const Jemail = document.getElementById("email").value;
+    const Jcep = document.getElementById("nome").value;
+    const Jrua = document.getElementById("cpf").value;
+    //const Jnumero = document.getElementById("numero").value;
+    const Jbairro = document.getElementById("bairro").value;
+    const Jcidade = document.getElementById("cidade").value;
+    const Jestado = document.getElementById("uf").value;
+
+    const json = {
+        nome: Jnome,
+        cpfCnpj: Jcpf,
+        email: Jemail,
+        telefone: Jtelefone,
+        cep: Jcep,
+        rua: Jrua,
+        //numero: Jnumero,
+        bairro: Jbairro,
+        cidade: Jcidade,
+        uf: Jestado
+    };
+    localStorage.setItem('formulario', JSON.stringify(json));
+    console.log(localStorage);
+}
+
 function validaForm(event){
     event.preventDefault()
     //alert("teste Form")
@@ -164,7 +193,7 @@ function validaForm(event){
     var cpf = document.getElementById("cpf").value;
     var cnpj = document.getElementById("cnpj").value;
     var email = document.getElementById("email").value;
-    var erro;
+    var erroForm = 0;
 
     if(nome != "" && length < 2){
         //alert("nome verdadeiro")
@@ -173,7 +202,7 @@ function validaForm(event){
     }else{
         alert("nome Falso")
         document.getElementById("msg-erro").innerHTML="<font color='red'>nome inválido</font>";	
-        erro = erro + 1;
+        erroForm = erroForm + 1;
     }
     //verifica cpf
     //alert("o CPF é"+cpf);
@@ -186,7 +215,7 @@ function validaForm(event){
         }else{
             alert('cpf inválido')
             document.getElementById("msg-erro").innerHTML="<font color='red'>CPF inválido</font>";	
-            erro = erro + 1;
+            erroForm = erroForm + 1;
         }
     }
 
@@ -196,28 +225,20 @@ function validaForm(event){
         if(verificaCNPJ){
             alert('cnpj válido')
         }else{
-            alert('cnpj inválido')
+            //alert('cnpj inválido')
             document.getElementById("msg-erro").innerHTML="<font color='red'>CNPJ inválido</font>";	
-            erro = erro + 1;
-        }
-    }
-    
-    if(email !== ""){
-        alert(email)
-        var verificaEmail = validacaoEmail(email)
-        alert("valida Email")
-        if(verificaEmail){
-            alert('Email válido')
-        }else{
-            alert('Email inválido')
-            erro = erro + 1;
+            erroForm = erroForm + 1;
         }
     }
 
-    if(erro !== 0){
-        alert("total de erros: "+erro)
-        return;
-        
+    if(erroForm==0){
+        gerarJSON();
+    }else{
+        alert("total de erros: "+erroForm)
+        return;    
     }
+    
+    
+
     
 }
