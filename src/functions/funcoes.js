@@ -1,3 +1,6 @@
+//import {enviarJSON} from './enviarJson.js';
+const express = require('express');
+
 function validarCPF(cpf) {	
 	cpf = cpf.replace(/[^\d]+/g,'');	
 	if(cpf == '') return false;	
@@ -172,18 +175,37 @@ const handlePhone = (event) => {
 
     const json = {
         nome: Jnome,
-        cpfCnpj: Jcpf,
+        //cpfCnpj: Jcpf,
         email: Jemail,
-        telefone: Jtelefone,
-        cep: Jcep,
-        rua: Jrua,
+        //telefone: Jtelefone,
+        //cep: Jcep,
+        //rua: Jrua,
         //numero: Jnumero,
-        bairro: Jbairro,
-        cidade: Jcidade,
-        uf: Jestado
+       // bairro: Jbairro,
+        //cidade: Jcidade,
+       // uf: Jestado
+       password: "123456"
     };
-    localStorage.setItem('formulario', JSON.stringify(json));
+    localStorage.setItem('user_data', JSON.stringify(json));
     console.log(localStorage);
+    enviarJSON(json)
+
+}
+
+function enviarJSON(RecebeJSON) {
+    const express = require('express');
+
+    var app = express();
+
+    app.use(express.json());
+
+    app.post('http://127.0.0.1:3001/users', function(request, response){
+    console.log(RecebeJSON);      // your JSON
+    response.send(RecebeJSON);    // echo the result back
+    });
+
+    app.listen(3000);
+   
 }
 
 function validaForm(event){
