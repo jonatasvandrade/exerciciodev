@@ -95,12 +95,10 @@ function SelecionaDoc(tipodoc){
             case 'cpf':
                 document.getElementById("box-cnpj").style.display ="none"
                 document.getElementById("box-cpf").style.display ="block"
-                alert("teste");
                 break;
             case 'cnpj':
             document.getElementById("box-cpf").style.display ="none"
             document.getElementById("box-cnpj").style.display ="block"
-            alert("teste");
             break;
             
         }
