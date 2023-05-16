@@ -182,6 +182,7 @@ const handlePhone = (event) => {
     };
     localStorage.setItem('formulario', JSON.stringify(json));
     console.log(localStorage);
+    return JSON.stringify(json);
 }
 
 function validaForm(event){
@@ -230,7 +231,9 @@ function validaForm(event){
     }
 
     if(erroForm==0){
-        gerarJSON();
+        var retornoJson = gerarJSON();
+        criaArquivo(retornoJson);
+
     }else{
         alert("total de erros: "+erroForm)
         return;    

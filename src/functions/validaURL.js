@@ -6,7 +6,7 @@ function verificaURL(){
         document.getElementById("nome").value = "JONATAS VIANA ANDRADE";
         document.getElementById("telefone").value = "(51)99700-5052";
         document.getElementById("cep").value = "93046-804";
-        document.getElementById("email").value = "jonatas@gmail.com";
+        document.getElementById("email").value = valor_url;
     }
     if(valor_url == 2){
         document.getElementById("nome").value = "EDSON ARANTES DO NASCIMENTO";
