@@ -185,6 +185,19 @@ const handlePhone = (event) => {
     return JSON.stringify(json);
 }
 
+function limpaFormulário(){
+    document.getElementById("nome").value = "";
+    document.getElementById("cpf").value = "";
+    document.getElementById("cnpj").value = "";
+    document.getElementById("telefone").value = "";
+    document.getElementById("email").value = "";
+    document.getElementById("rua").value = "";
+    document.getElementById("cep").value = "";
+    document.getElementById("bairro").value = "";
+    document.getElementById("cidade").value = "";
+    document.getElementById("uf").value = "";
+}
+
 function validaForm(event){
     event.preventDefault()
     //alert("teste Form")
@@ -232,7 +245,10 @@ function validaForm(event){
 
     if(erroForm==0){
         var retornoJson = gerarJSON();
-        criaArquivo(retornoJson);
+        var doc = preencheDoc(cpf,cnpj);
+        criaArquivo(retornoJson,nome,doc);
+        limpaFormulário();
+        
 
     }else{
         alert("total de erros: "+erroForm)
